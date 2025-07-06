@@ -10,8 +10,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: postgres
-
-
+      volumes:
+        -pgdata:/var/lib/postgresql/data/
   python_app:
     build:
       dockerfile: Dockerfile
@@ -25,3 +25,6 @@ services:
       - DB_PASSWORD=1234
       - DB_NAME=postgres
     command: ["python3", "habittrackerapp.py"]
+
+volumes:
+  pgdata:
